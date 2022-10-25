@@ -13,7 +13,7 @@ export const routs = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
-        errorElement:<ErrorPage></ErrorPage>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: "/",
@@ -21,7 +21,10 @@ export const routs = createBrowserRouter([
             },
             {
                 path: "/courses",
-                element: <Courses></Courses>
+                loader: async () => {
+                    return fetch("http://localhost:5000/courses")
+                },
+                element: <Courses></Courses>,
             },
             {
                 path: "/faq",
@@ -43,7 +46,7 @@ export const routs = createBrowserRouter([
                 path: "/footer",
                 element: <Footer></Footer>
             }
-            
+
         ]
     }
 ])

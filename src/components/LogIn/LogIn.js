@@ -8,20 +8,9 @@ const LogIn = () => {
             <div className="w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100">
                 <h1 className="text-2xl font-bold text-center">Login</h1>
                 <form noValidate="" action="" className="space-y-6 ng-untouched ng-pristine ng-valid">
+                    
                     <div className="space-y-1 text-sm">
-                        <label htmlFor="username" className="block dark:text-gray-400">Username</label>
-                        <input
-                            id="password"
-                            name="password"
-                            type="password"
-                            autoComplete="current-password"
-                            required
-                            className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                            placeholder="Password"
-                        />
-                    </div>
-                    <div className="space-y-1 text-sm">
-                        <label htmlFor="password" className="block dark:text-gray-400">Password</label>
+                        <label htmlFor="password" className="block dark:text-gray-400">Email</label>
                         <input
                             id="email-address"
                             name="email"
@@ -31,6 +20,18 @@ const LogIn = () => {
                             className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                             placeholder="Email address"
                         />
+                        <div className="space-y-1 text-sm">
+                            <label htmlFor="username" className="block dark:text-gray-400">Password</label>
+                            <input
+                                id="password"
+                                name="password"
+                                type="password"
+                                autoComplete="current-password"
+                                required
+                                className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                placeholder="Password"
+                            />
+                        </div>
                         <div className="hover:underline flex justify-end text-xs dark:text-gray-400">
                             <Link to="/errorpage">Forgot Password?</Link>
                         </div>
