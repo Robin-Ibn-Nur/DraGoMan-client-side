@@ -1,14 +1,37 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { useContext } from "react";
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify";
+import { AuthContext } from "../../context/UserContext";
 
 
 const LogIn = () => {
+    const { signIn } = useContext(AuthContext)
+    console.log(signIn)
+    const nevigate = useNavigate()
+    const submit = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const email =form.email.value
+        const password = form.password.value
+        console.log(email, password)
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                toast.success('You are Log In Now', { autoClose: 500 })
+                form.reset()
+                nevigate('/');
+            })
+            .catch(error => toast.error(error))
+    }
+
     return (
         <div className='flex justify-center my-10'>
             <div className="w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100">
                 <h1 className="text-2xl font-bold text-center">Login</h1>
-                <form noValidate="" action="" className="space-y-6 ng-untouched ng-pristine ng-valid">
-                    
+                <form onSubmit={submit} noValidate="" action="" className="space-y-6 ng-untouched ng-pristine ng-valid">
+
                     <div className="space-y-1 text-sm">
                         <label htmlFor="password" className="block dark:text-gray-400">Email</label>
                         <input

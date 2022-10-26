@@ -1,7 +1,20 @@
 import React from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { AuthContext } from '../../context/UserContext';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleSignOut = () => {
+        logOut()
+            .then(() => {
+                toast.success('SuccessFully Log Out', { autoClose: 500 })
+            })
+            .catch(error => toast.error('Your are currently Sign In', { autoClose: 500 }))
+    }
+
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -28,7 +41,9 @@ const Header = () => {
                     <Link to="/faq">FAQ</Link>
                     <Link to="/blog">Blog</Link>
                     <Link to="/login">Log In</Link>
+                    <Link onClick={handleSignOut}>Log Out</Link>
                     <Link to="/signup">Sign Up</Link>
+                    {user?.photoURL && <span>{user.photoURL}</span>}
                 </ul>
             </div>
             <div className="navbar-end">

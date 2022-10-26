@@ -1,26 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { AuthContext } from '../../context/UserContext';
 
 const SignUp = () => {
+    const { register } = useContext(AuthContext);
+
+    const [wrongPassword, setWrongPassword] = useState('')
+    const [success, setSuccess] = useState(false)
+
+    const registration = (event) => {
+        event.preventDefault()
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password)
+        // let pwd = /^(?=.*\d)(?=.*[A-Z])(.{12,50})$/
+        if (!/^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{7,}$/.test(password)) {
+            toast.error('Please Provide a valid password', {autoClose: 500})
+            setWrongPassword('Please Check at at least one digit, one lower case, one upper case & 8 from the mentioned characters')
+            return;
+        }
+        if (password.length < 6) {
+            toast.error('Please add at lease six Carecter', {autoClose: 500})
+            setWrongPassword('Please add at least six Carecter')
+            return;
+        }
+        setWrongPassword('')
+
+        register(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                toast.success('WonderFull!: Successfully Registered', { autoClose: 500 })
+                setSuccess(true)
+                form.reset()
+            })
+            .catch(error => {
+                console.error(error)
+                setWrongPassword(error.message)
+            })
+    }
+
     return (
         <div className='flex justify-center my-10'>
             <div className="w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100">
                 <h1 className="text-2xl font-bold text-center">Sign Up Here</h1>
-                <form noValidate="" action="" className="space-y-6 ng-untouched ng-pristine ng-valid">
+                <form onSubmit={registration} noValidate="" action="" className="space-y-6 ng-untouched ng-pristine ng-valid">
 
                     <div className="space-y-1 text-sm">
-                        <label htmlFor="password" className="block dark:text-gray-400">Email</label>
-                        <input
-                            id="email-address"
-                            name="email"
-                            type="email"
-                            autoComplete="email"
-                            required
-                            className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                            placeholder="Email address"
-                        />
+                        <label htmlFor="">Name</label>
+                        <input type="text" name="name" id="name" required className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder='Name' />
+                        <label hatmlfor="my_form_email" className="block dark:text-gray-400">Your Email:</label>
+                        <input id="my_form_email" className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" type='email' name='email' placeholder="Email address" required />
+
                         <div className="space-y-1 text-sm">
-                            <label htmlFor="username" className="block dark:text-gray-400">Password</label>
+                            <label htmlFor="my_form_password" className="block dark:text-gray-400">Your Password:</label>
                             <input
                                 id="password"
                                 name="password"
@@ -31,11 +67,10 @@ const SignUp = () => {
                                 placeholder="Password"
                             />
                         </div>
-                        <div className="hover:underline flex justify-end text-xs dark:text-gray-400">
-                            <Link to="/errorpage">Forgot Password?</Link>
-                        </div>
                     </div>
-                    <button className="block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-violet-400">Sign in</button>
+                    <p className="px-3 text-sm text-red-600">{wrongPassword}</p>
+                    <button className="block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-violet-400">Register</button> <br />
+                    {success && <Link to='/login' className='text-green-500 link link-hover text-center'>Registration Complete. Please Log In Now</Link>}
                 </form>
                 <div className="flex items-center pt-4 space-x-1">
                     <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
