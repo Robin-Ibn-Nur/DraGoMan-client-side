@@ -20,7 +20,7 @@ const Courses = () => {
                     </div>
                 </div>
             </div>
-            <div className='right-side'>
+            <div className='right-side text-center link link-hover'>
                 {
                     courses.map(course => <RightSideData
                         key={course.id} course={course}
