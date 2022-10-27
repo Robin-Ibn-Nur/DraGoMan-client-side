@@ -35,7 +35,7 @@ export const routs = createBrowserRouter([
             {
                 path: "/course/:courseid",
                 loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`),
-                element: <SecretPath><CourseDetailsPage></CourseDetailsPage></SecretPath>
+                element: <CourseDetailsPage></CourseDetailsPage>
             },
             {
                 path: "/blog",

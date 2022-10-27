@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const LeftSideData = ({ course }) => {
-    console.log(course);
-    const { id, name, image, } = course
+    const { id, name, image, Description } = course
     return (
         <div className="flex flex-col overflow-hidden rounded-lg shadow-lg">
             <div className="flex-shrink-0">
@@ -11,10 +10,10 @@ const LeftSideData = ({ course }) => {
             </div>
             <div className="flex flex-col justify-between flex-1 p-6 bg-white">
                 <div className="flex-1">
-                    <a href="#" className="block mt-2">
+                    <div className="block mt-2">
                         <h1 className="text-xl font-semibold text-neutral-600">Course Name: {name}</h1>
-                        <p className="mt-3 text-base text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.</p>
-                    </a>
+                        <p className="mt-3 text-base text-gray-500">{Description}</p>
+                    </div>
                 </div>
                 <div className="text-center mt-6">
                     <div className="ml-3">

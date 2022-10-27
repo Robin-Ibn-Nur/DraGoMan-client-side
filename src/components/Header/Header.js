@@ -34,7 +34,7 @@ const Header = () => {
                         <Link to="/signup">Sign Up</Link>
                     </ul>
                 </div>
-                <button className="btn btn-ghost normal-case text-xl">daisyUI</button>
+                <button className="btn btn-ghost normal-case text-xl">DraGoMan</button>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0 gap-7 text-2xl ">

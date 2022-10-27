@@ -1,25 +1,49 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
+import jsPDF from 'jspdf';
+import logo from '../Image/a.jpg'
 
 const CourseDetailsPage = () => {
 
-    const details = useLoaderData()
+    const { details } = useLoaderData()
     console.log(details);
 
+
+    const pdfGenerate = () => {
+        let doc = new jsPDF('landscape', 'px', 'a4', 'false');
+        doc.addImage(logo, 'JPG', 65, 20, 500, 400)
+        doc.addPage()
+        doc.setFont('bold')
+        doc.text(60, 60, 'Name')
+        doc.text(60, 80, 'Email')
+        doc.text(60, 100, 'Number')
+        doc.setFont('Normal')
+        doc.text(100, 60, ':RoBiN')
+        doc.text(100, 80, ':saifsammy653@gmail.com')
+        doc.text(120, 100, ':000000000000')
+        doc.save('RoBiN.pdf')
+    }
+
     return (
-        <section className="text-gray-600 body-font">
-            <div className="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-                <img className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600"/>
-                    <div className="text-center lg:w-2/3 w-full">
-                        <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Microdosing synth tattooed vexillologist</h1>
-                        <p className="mb-8 leading-relaxed">Meggings kinfolk echo park stumptown DIY, kale chips beard jianbing tousled. Chambray dreamcatcher trust fund, kitsch vice godard disrupt ramps hexagon mustache umami snackwave tilde chillwave ugh. Pour-over meditation PBR&amp;B pickled ennui celiac mlkshk freegan photo booth af fingerstache pitchfork.</p>
-                        <div className="flex justify-center">
-                            <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
-                            <button className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">Button</button>
-                        </div>
+        <div className="container my-20 flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 dark:bg-gray-900 dark:text-gray-100">
+            <div className="flex justify-between p-4">
+                <div className="flex space-x-4">
+                    <div>
+                        <img src="https://source.unsplash.com/100x100/?portrait" alt="" />
                     </div>
+                    <div>
+                        <h4 className="font-bold">Leroy Jenkins</h4>
+                    </div>
+                </div>
+                <div className="flex items-center space-x-2 dark:text-yellow-500">
+                    <button onClick={pdfGenerate} className="btn btn-outline btn-accent">Download Pdf</button>
+                </div>
             </div>
-        </section>
+            <div className="p-4 text-center space-y-2 text-sm dark:text-gray-400">
+                <p>Vivamus sit amet turpis leo..</p>
+                <Link to='/chackout' className="btn btn-outline btn-accent my-10">Get Premium Excess</Link>
+            </div>
+        </div>
     );
 };
 

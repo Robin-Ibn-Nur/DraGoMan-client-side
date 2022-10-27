@@ -5,7 +5,6 @@ import RightSideData from './RightSide/RightSideData';
 import './Courses.css';
 const Courses = () => {
     const courses = useLoaderData();
-    console.log(courses);
     return (
         <div className="container-display">
             <div className=''>
