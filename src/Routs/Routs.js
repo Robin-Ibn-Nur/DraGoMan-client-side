@@ -35,11 +35,12 @@ export const routs = createBrowserRouter([
             },
             {
                 path: "/course/:id",
-                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`),
+                loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`),
                 element: <CourseDetailsPage></CourseDetailsPage>
             },
             {
-                path: "chackout",
+                path: "/chakout/:id",
+                loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`),
                 element: <SecretPath><ChackOut></ChackOut></SecretPath>
             },
             {

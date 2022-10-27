@@ -4,11 +4,13 @@ import jsPDF from 'jspdf';
 import logo from '../Image/a.jpg'
 
 const CourseDetailsPage = () => {
+    /*using loader data to get the details*/ 
+    const details = useLoaderData()
+    const { id, name, image, Description } = details;
 
-    const { details } = useLoaderData()
-    console.log(details);
 
-
+    /*pdfGenarator*/ 
+    
     const pdfGenerate = () => {
         let doc = new jsPDF('landscape', 'px', 'a4', 'false');
         doc.addImage(logo, 'JPG', 65, 20, 500, 400)
@@ -30,10 +32,10 @@ const CourseDetailsPage = () => {
             <div className="flex justify-between p-4">
                 <div className="flex space-x-4">
                     <div>
-                        <img src="https://source.unsplash.com/100x100/?portrait" alt="" />
+                        <img src={image} alt="" />
                     </div>
                     <div>
-                        <h4 className="font-bold">Leroy Jenkins</h4>
+                        <h4 className="font-bold">{name}</h4>
                     </div>
                 </div>
                 <div className="flex items-center space-x-2 dark:text-yellow-500">
@@ -41,8 +43,8 @@ const CourseDetailsPage = () => {
                 </div>
             </div>
             <div className="p-4 text-center space-y-2 text-sm dark:text-gray-400">
-                <p>Vivamus sit amet turpis leo..</p>
-                <Link to='/chackout' className="btn btn-outline btn-accent my-10">Get Premium Excess</Link>
+                <p>{Description}</p>
+                <Link to={`/chakout/${id}`} className="btn btn-outline btn-accent my-10">Get Premium Excess</Link>
             </div>
         </div>
     );
