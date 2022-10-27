@@ -1,0 +1,10 @@
+.container-display{
+    margin-top: 50px;
+    margin-bottom: 70px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+.right-side{
+    position: relative;
+    background-color: rgb(25, 27, 25);
+}

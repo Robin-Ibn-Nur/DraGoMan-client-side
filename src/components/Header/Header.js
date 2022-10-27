@@ -40,10 +40,14 @@ const Header = () => {
                     <Link to="/courses">Courses</Link>
                     <Link to="/faq">FAQ</Link>
                     <Link to="/blog">Blog</Link>
-                    <Link to="/login">Log In</Link>
-                    <Link onClick={handleSignOut}>Log Out</Link>
+                    {
+                        user?.email ?
+                            <Link onClick={handleSignOut}>Log Out</Link>
+                            :
+                            <Link to="/login">Log In</Link>
+                    }
                     <Link to="/signup">Sign Up</Link>
-                    {user?.photoURL && <span>{user.photoURL}</span>}
+                    {user?.displayName && <span>{user.displayName}</span>}
                 </ul>
             </div>
             <div className="navbar-end">

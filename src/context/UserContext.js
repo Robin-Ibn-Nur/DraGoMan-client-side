@@ -13,7 +13,11 @@ const auth = getAuth(app)
 const UserContext = ({ children }) => {
 
     const [user, setUser] = useState({})
+
+    /*set loader to get the user*/ 
     const [loading, setLoading] = useState(true)
+
+    /*set GoogleAuthProvider to signInWithGooglePopUp*/ 
     const googleProvider = new GoogleAuthProvider();
 
 
@@ -33,9 +37,11 @@ const UserContext = ({ children }) => {
         return signOut(auth);
     }
 
-    // const signInWithGoogel = () => {
-    //     return signInWithPopup(auth, googleProvider);
-    // }
+
+    /*use signInWithGoogle if user want*/ 
+    const signInWithGoogle = () => {
+        return signInWithPopup(auth, googleProvider);
+    }
 
 
     /*using useEffect to get user*/
@@ -56,7 +62,7 @@ const UserContext = ({ children }) => {
         register,
         signIn,
         logOut,
-        // signInWithGoogel
+        signInWithGoogle
     }
 
     return (
