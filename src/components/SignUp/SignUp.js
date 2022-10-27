@@ -14,6 +14,7 @@ const SignUp = () => {
         event.preventDefault()
         const form = event.target;
         const name = form.name.value;
+        const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
         // let pwd = /^(?=.*\d)(?=.*[A-Z])(.{12,50})$/
@@ -32,21 +33,33 @@ const SignUp = () => {
         register(email, password)
             .then(result => {
                 const user = result.user;
+                console.log(user);
                 toast.success('WonderFull!: Successfully Registered', { autoClose: 500 })
                 setSuccess(true)
                 setWrongPassword('')
                 form.reset()
-                updateUserProfile(name)
+                handleUpdateProfile(name, photoURL)
             })
             .catch(error => {
                 setWrongPassword(error.message)
             })
     }
 
+    const handleUpdateProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+            .then(() => { toast.success('Profile Updated Successfully', { autoClose: 500 }) })
+        .catch(error=>{toast.error('Something is Missing!', {autoClose: 500})})
+    }
+
     const googleSignIn = () => {
         signInWithGoogle()
             .then(result => {
                 const user = result.user;
+                console.log(user);
                 toast.success('Successfully Sign In', { autoClose: 500 })
             })
             .catch(error => toast.error('Please try again', { autoClose: 500 }))
@@ -61,6 +74,8 @@ const SignUp = () => {
                     <div className="space-y-1 text-sm">
                         <label htmlFor="">Name</label>
                         <input type="text" name="name" id="name" required className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder='Name' />
+                        <label htmlFor="">Photo URL</label>
+                        <input type="text" name="photoURL" required className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder='Photo URL' />
                         <label hatmlfor="my_form_email" className="block dark:text-gray-400">Your Email:</label>
                         <input id="my_form_email" className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" type='email' name='email' placeholder="Email address" required />
 
