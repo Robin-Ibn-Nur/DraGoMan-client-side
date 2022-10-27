@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
 import { AuthContext } from "../../context/UserContext";
 
@@ -8,6 +8,8 @@ import { AuthContext } from "../../context/UserContext";
 const LogIn = () => {
     const { signIn, signInWithGoogle } = useContext(AuthContext)
     const nevigate = useNavigate()
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
     const submit = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -19,7 +21,7 @@ const LogIn = () => {
                 const user = result.user;
                 toast.success('You are Log In Now', { autoClose: 500 })
                 form.reset()
-                nevigate('/');
+                nevigate(from, {replace: true});
             })
             .catch(error => toast.error(error))
 

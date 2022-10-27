@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/UserContext';
 
 const SignUp = () => {
-    const { register, signInWithGoogle } = useContext(AuthContext);
+    const { register, signInWithGoogle, updateUserProfile } = useContext(AuthContext);
 
     const [wrongPassword, setWrongPassword] = useState('')
     const [success, setSuccess] = useState(false)
@@ -13,9 +13,9 @@ const SignUp = () => {
     const registration = (event) => {
         event.preventDefault()
         const form = event.target;
+        const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
         // let pwd = /^(?=.*\d)(?=.*[A-Z])(.{12,50})$/
         if (!/^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{7,}$/.test(password)) {
             toast.error('Please Provide a valid password', { autoClose: 500 })
@@ -34,8 +34,9 @@ const SignUp = () => {
                 const user = result.user;
                 toast.success('WonderFull!: Successfully Registered', { autoClose: 500 })
                 setSuccess(true)
-                form.reset()
                 setWrongPassword('')
+                form.reset()
+                updateUserProfile(name)
             })
             .catch(error => {
                 setWrongPassword(error.message)

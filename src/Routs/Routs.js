@@ -8,6 +8,7 @@ import Footer from "../components/Footer/Footer";
 import Home from "../components/Home/Home";
 import LogIn from "../components/LogIn/LogIn";
 import Main from "../components/Main/Main";
+import SecretPath from "../components/SecretPath/SecretPath";
 import SignUp from "../components/SignUp/SignUp";
 
 export const routs = createBrowserRouter([
@@ -34,7 +35,7 @@ export const routs = createBrowserRouter([
             {
                 path: "/course/:courseid",
                 loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`),
-                element: <CourseDetailsPage></CourseDetailsPage>
+                element: <SecretPath><CourseDetailsPage></CourseDetailsPage></SecretPath>
             },
             {
                 path: "/blog",
