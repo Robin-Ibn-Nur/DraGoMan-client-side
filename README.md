@@ -13,7 +13,7 @@ Navbar Details:
 
 
 ## Live Link
--  Hosted in firebase -> [DraGoMan](https://crazy-programmer.netlify.app/)
+-  Hosted in firebase -> [DraGoMan](https://my-project-d0fe6.web.app/)
 
 ## Using API 
 
