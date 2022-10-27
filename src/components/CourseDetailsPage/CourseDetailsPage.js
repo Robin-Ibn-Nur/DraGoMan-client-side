@@ -22,6 +22,7 @@ const CourseDetailsPage = () => {
         doc.text(100, 80, ':saifsammy653@gmail.com')
         doc.text(120, 100, ':000000000000')
         doc.save('RoBiN.pdf')
+
     }
 
     return (

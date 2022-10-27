@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
+import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
 import { createContext } from 'react';
 import app from '../components/FireBase/FireBase.config';
 
@@ -20,6 +20,8 @@ const UserContext = ({ children }) => {
     /*set GoogleAuthProvider to signInWithGooglePopUp*/
     const googleProvider = new GoogleAuthProvider();
 
+    /*set gitHubProvider to*/
+    const gitProvider = new GithubAuthProvider();
 
     /*user registration form*/
     const register = (email, password) => {
@@ -50,6 +52,12 @@ const UserContext = ({ children }) => {
         return signInWithPopup(auth, googleProvider);
     }
 
+    /*use signInWithGit if user want*/ 
+    const signInWithGit = () => {
+        setLoading(true);
+        return signInWithPopup(auth, gitProvider)
+    }
+
 
     /*using useEffect to get user*/
     useEffect(() => {
@@ -69,7 +77,8 @@ const UserContext = ({ children }) => {
         signIn,
         logOut,
         signInWithGoogle,
-        updateUserProfile
+        updateUserProfile,
+        signInWithGit
     }
 
     return (
