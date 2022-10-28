@@ -6,21 +6,17 @@ import './Courses.css';
 const Courses = () => {
     const courses = useLoaderData();
     return (
-        <div className="container-display">
-            <div className=''>
-                <div className=" relative px-4 py-12 sm:px-6 lg:py-16 lg:px-8">
-                    <div className="relative mx-auto max-w-7xl">
-                        <div className="grid max-w-lg gap-5 mx-auto lg:grid-cols-2 lg:max-w-none">
-                            {
-                                courses.map(course => <LeftSideData
-                                    key={course.id} course={course}></LeftSideData>)
-                            }
-
-                        </div>
-                    </div>
+        <div className=" grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
+            <section className="p-4 lg:p-8 dark:bg-gray-800">
+                <div className="container mx-auto space-y-12">
+                    {
+                        courses.map(course => <LeftSideData
+                            key={course.id} course={course}></LeftSideData>)
+                    }
                 </div>
-            </div>
-            <div className='right-side text-center link link-hover'>
+            </section>
+
+            <div className='mt-6'>
                 {
                     courses.map(course => <RightSideData
                         key={course.id} course={course}
