@@ -7,14 +7,14 @@ const RightSideData = ({ course }) => {
         <div className="overflow-x-auto">
             <table className="table w-full tabble-compact">
                 <thead>
-                        <tr className="hover">
-                            <th>{id}</th>
-                            <td>
-                                <Link>{name}</Link>
-                            </td>
-                        </tr>
-                    </thead>
-                
+                    <tr className="hover">
+                        <th>{id}</th>
+                        <td>
+                            <Link to={`/course/${id}`}>{name}</Link>
+                        </td>
+                    </tr>
+                </thead>
+
             </table>
         </div>
 
