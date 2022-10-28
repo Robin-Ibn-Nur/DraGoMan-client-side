@@ -20,11 +20,11 @@ const LogIn = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                toast.success('You are Log In Now', { autoClose: 500 })
+                toast.success('SuccessFully Log In', { autoClose: 500 })
                 form.reset()
-                nevigate(from, {replace: true});
+                nevigate(from, { replace: true });
             })
-            .catch(error => toast.error(error))
+            .catch(error => toast.error('You enterd wrong password', { autoClose: 500 }))
 
     }
 
@@ -43,9 +43,9 @@ const LogIn = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                toast.success('Successfully Sign In with Git', {autoClose: 500})
+                toast.success('Successfully Sign In with Git', { autoClose: 500 })
             })
-        .catch(error=> toast.error('Please try again', {autoClose: 500}))
+            .catch(error => toast.error('Please try again', { autoClose: 500 }))
     }
 
     return (

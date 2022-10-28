@@ -16,7 +16,7 @@ const Header = () => {
             .catch(error => toast.error('Your are currently Sign In', { autoClose: 500 }))
     }
 
-    
+
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -50,12 +50,15 @@ const Header = () => {
                     }
                     <Link to="/signup">Sign Up</Link>
                     {user?.displayName && <span>{user.displayName}</span>}
-                    {user?.photoURL ?
-                        <img style={{ height: '40px' }} className="mask mask-circle" alt=''
-                            src={user?.photoURL}>
 
-                        </img>
-                        : <FaUserCircle style={{ height: '40px' }} className="mask mask-circle"></FaUserCircle>
+                    {user?.photoURL ?
+                        <div className='tooltip tooltip-bottom' data-tip={user?.displayName}>
+                            <img style={{ height: '40px' }} className="mask mask-circle" alt=''
+                                src={user?.photoURL}>
+
+                            </img>
+                        </div>
+                        : <div className='tooltip tooltip-bottom' data-tip="Unknown"><FaUserCircle style={{ height: '40px' }} className="mask mask-circle"></FaUserCircle></div>
                     }
 
                 </ul>
