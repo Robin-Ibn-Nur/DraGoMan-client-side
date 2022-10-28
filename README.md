@@ -2,6 +2,8 @@
 
 #Welcome To DraGoMan Repository
 
+Kind your information DraGoMan is a Interpreter
+
 This is a Language Teaching site.
 
 Navbar Details:
@@ -10,6 +12,10 @@ Navbar Details:
 -  Courses section for Course.
 -  Error Page setup .
 -  Blog section for answers of questions.
+- Faq section emplement.
+
+Optional
+- Dynamic route creat
 
 
 ## Live Link
@@ -17,11 +23,14 @@ Navbar Details:
 
 ## Using API 
 
--  Api Link -> [Link](https://openapi.programming-hero.com/api/quiz)
--  Api for Link (Dynamic) -> [Link](https://openapi.programming-hero.com/api/quiz/${id})
+-  Live Server Link -> [Link](https://my-project-server.vercel.app/courses)
+-  Live Server Link (Dynamic) -> [Link](`https://my-project-server.vercel.app/course/${params.id}`)
 
 ## React Router Dom v6.4 
 -  Documentation Link -> [Link](https://reactrouter.com/en/main/start/overview)
+
+## firebase 
+- Documentation Link -> [Link](https://firebase.google.com/docs/auth?authuser=0&hl=en)
 
 ## Resources & Credits
 -  CSS Framwork -> [Tailwind](https://tailwindcss.com/)
@@ -31,4 +40,4 @@ Navbar Details:
 
 ## Other Resources
 -  Banner Photo -> [Freepic](https://www.freepik.com/)
--  Icon -> [FontAwesome](https://fontawesome.com/)
+-  Icon -> [React Icon](https://react-icons.github.io/react-icons/)
