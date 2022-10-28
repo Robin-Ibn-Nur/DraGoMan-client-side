@@ -8,7 +8,7 @@ const RightSideData = ({ course }) => {
             <table className="table w-full tabble-compact">
                 <thead>
                     <tr className="hover">
-                        <th>{id}</th>
+                        <Link to={`/course/${id}`}>{id}</Link>
                         <td>
                             <Link to={`/course/${id}`}>{name}</Link>
                         </td>
