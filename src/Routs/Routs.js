@@ -13,9 +13,14 @@ import SecretPath from "../components/SecretPath/SecretPath";
 import SignUp from "../components/SignUp/SignUp";
 
 export const routs = createBrowserRouter([
+
+    /*routs*/ 
     {
         path: "/",
         element: <Main></Main>,
+
+        /*erroPage for error handling*/ 
+        
         errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
@@ -24,6 +29,8 @@ export const routs = createBrowserRouter([
             },
             {
                 path: "/courses",
+
+                /*use loader to pass the data to a component*/ 
                 loader: async () => {
                     return fetch("https://my-project-server.vercel.app/courses")
 
@@ -35,11 +42,15 @@ export const routs = createBrowserRouter([
                 element: <Faq></Faq>
             },
             {
+
+                /*using loader to pass data by id*/ 
                 path: "/course/:id",
                 loader: ({ params }) => fetch(`https://my-project-server.vercel.app/course/${params.id}`),
                 element: <CourseDetailsPage></CourseDetailsPage>
             },
             {
+                /*this is a private route*/  
+
                 path: "/chakout/:id",
                 loader: ({ params }) => fetch(`https://my-project-server.vercel.app/course/${params.id}`),
                 element: <SecretPath><ChackOut></ChackOut></SecretPath>

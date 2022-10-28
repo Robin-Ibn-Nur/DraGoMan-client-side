@@ -2,8 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const LeftSideData = ({ course }) => {
-    const { id, name, image, Description } = course
+    const { id, name, image, Description } = course;
     return (
+
+        /*this is card details component*/ 
+        
         <div className="card lg:card-side bg-base-100 shadow-xl">
             <figure><img src={image} alt="Album" /></figure>
             <div className="card-body">
