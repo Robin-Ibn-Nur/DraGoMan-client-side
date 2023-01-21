@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
+    // home page
     return (
         <div className="hero min-h-screen" style={{ backgroundImage: `url("https://img.freepik.com/free-vector/flat-people-with-words-different-languages_23-2147860989.jpg?w=740&t=st=1666877581~exp=1666878181~hmac=7e1b4b985f332edb654840f215ee85b7bf6111e456c6135f921eb56434059b7a")` }}>
             <div className="hero-overlay bg-opacity-60"></div>
